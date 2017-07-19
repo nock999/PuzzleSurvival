@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Firefly.h"
+#include "First_DemoCharacter.h"
 #include "Runtime/Engine/Classes/Components/SphereComponent.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 
@@ -11,6 +12,8 @@ AFirefly::AFirefly()
 	PrimaryActorTick.bCanEverTick = true;
 	m_fPlayerConvinceTimer = -1.0f;
 	m_fPlayerConvinceDelay = 3.0f;
+
+	m_bFollowingPlayer = false;
 
 	m_fOrbitRadius = 60.0f;
 	m_fOrbitHeight = 20.0f;
@@ -34,6 +37,12 @@ AFirefly::AFirefly()
 	m_pPlayerAttractSphere->OnComponentEndOverlap.AddDynamic(this, &AFirefly::OnEndAttract);
 	m_pPlayerAttractSphere->SetVisibility(true);
 
+	m_pCollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionSphere"));
+	m_pCollisionSphere->InitSphereRadius(10.0f);
+	m_pCollisionSphere->SetupAttachment(RootComponent);
+	m_pCollisionSphere->ComponentTags.Add(TEXT("FireflyCollision"));
+
+
 	m_pPotentialFollowTarget = nullptr;
 }
 
@@ -46,19 +55,22 @@ void AFirefly::BeginPlay()
 
 void AFirefly::OnBeginAttract(class UPrimitiveComponent* ThisComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Begin Attract"));
-
-	m_fPlayerConvinceTimer = 0.0f;
 	m_pPotentialFollowTarget = OtherComp;
+
+	if (OtherActor->IsA(AFirst_DemoCharacter::StaticClass()))
+	{
+		m_fPlayerConvinceTimer = 0.0f;
+	}
 }
 
 void AFirefly::OnEndAttract(class UPrimitiveComponent* ThisComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("End Attract"));
-
 	m_fPlayerConvinceTimer = -1.0f;
+}
+
+void AFirefly::OnConstruction(const FTransform & Transform)
+{
+	m_pPlayerAttractSphere->InitSphereRadius(m_fAttractRange);
 }
 
 // Called every frame
@@ -83,6 +95,7 @@ void AFirefly::Tick(float DeltaTime)
 		if (m_fPlayerConvinceTimer >= m_fPlayerConvinceDelay)
 		{
 			m_fPlayerConvinceTimer = -1.0f;
+			m_bFollowingPlayer = true;
 			AttachToComponent(m_pPotentialFollowTarget, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 			m_pPotentialFollowTarget = nullptr;
 		}

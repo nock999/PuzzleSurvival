@@ -70,9 +70,15 @@
     <ClInclude Include="..\..\Source\First_Demo\Firefly.h">
       <Filter>Source\First_Demo</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\First_Demo\Nest.h">
+      <Filter>Source\First_Demo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\First_Demo\Firefly.cpp">
+      <Filter>Source\First_Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\First_Demo\Nest.cpp">
       <Filter>Source\First_Demo</Filter>
     </ClCompile>
   </ItemGroup>

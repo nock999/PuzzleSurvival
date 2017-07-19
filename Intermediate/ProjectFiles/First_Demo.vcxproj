@@ -559,6 +559,8 @@
     <NMakeOutput>..\..\Binaries\HTML5\First_Demo-HTML5-Shipping.exe</NMakeOutput>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\First_Demo\Nest.cpp" />
+    <ClInclude Include="..\..\Source\First_Demo\Nest.h" />
     <None Include="..\..\First_Demo.uproject" />
     <None Include="..\..\Source\First_Demo.Target.cs" />
     <None Include="..\..\Source\First_DemoEditor.Target.cs" />

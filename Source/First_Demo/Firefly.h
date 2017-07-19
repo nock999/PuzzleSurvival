@@ -25,6 +25,9 @@ protected:
 	UFUNCTION()
 	void OnEndAttract(class UPrimitiveComponent* ThisComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	void OnConstruction(const FTransform& Transform) override;
+
+	bool m_bFollowingPlayer;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -34,6 +37,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Firefly")
 	class USphereComponent* m_pPlayerAttractSphere;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Firefly")
+	class USphereComponent* m_pCollisionSphere;
 
 	USceneComponent* m_pRootSceneComponent;
 	USceneComponent* m_pPotentialFollowTarget;
