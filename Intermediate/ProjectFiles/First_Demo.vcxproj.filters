@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\First_Demo.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{3112DD9B-3EC4-4080-91A8-1F2336F0FC3F}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\First_Demo.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\First_DemoEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{1A7A79C8-A548-40B4-B15B-F376B9B627FF}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\First_Demo">
+			<UniqueIdentifier>{7900A3ED-05A0-46B1-9C8E-48030D177855}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\First_Demo\First_Demo.Build.cs">
+			<Filter>Source\First_Demo</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\First_Demo\First_Demo.cpp">
+			<Filter>Source\First_Demo</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\First_Demo\First_Demo.h">
+			<Filter>Source\First_Demo</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\First_Demo\First_DemoCharacter.cpp">
+			<Filter>Source\First_Demo</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\First_Demo\First_DemoCharacter.h">
+			<Filter>Source\First_Demo</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\First_Demo\First_DemoGameMode.cpp">
+			<Filter>Source\First_Demo</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\First_Demo\First_DemoGameMode.h">
+			<Filter>Source\First_Demo</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\First_Demo\First_DemoHUD.cpp">
+			<Filter>Source\First_Demo</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\First_Demo\First_DemoHUD.h">
+			<Filter>Source\First_Demo</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\First_Demo\First_DemoProjectile.cpp">
+			<Filter>Source\First_Demo</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\First_Demo\First_DemoProjectile.h">
+			<Filter>Source\First_Demo</Filter>
+		</ClInclude >
+	</ItemGroup>
+</Project>
