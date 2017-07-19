@@ -19,16 +19,24 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION()
+	void OnBeginAttract(class UPrimitiveComponent* ThisComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
+
+	UFUNCTION()
+	void OnEndAttract(class UPrimitiveComponent* ThisComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Firefly")
 	UStaticMeshComponent* m_pStaticMesh;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Firefly")
 	class USphereComponent* m_pPlayerAttractSphere;
 
 	USceneComponent* m_pRootSceneComponent;
-	USceneComponent* m_pFollowTarget;
+	USceneComponent* m_pPotentialFollowTarget;
 
 	float m_fPlayerConvinceTimer;
 
@@ -46,4 +54,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Firefly")
 	float m_fAttractRange;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Firefly")
+	float m_fPlayerConvinceDelay;
 };
