@@ -22,9 +22,8 @@ AFirefly::AFirefly()
 	m_pStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Geometry"));
 	m_pStaticMesh->SetupAttachment(RootComponent);
 
-	m_pPlayerAttractSphere = CreateDefaultSubobject<USphereComponent>(TEXT("AttractSphere"));
-	m_pPlayerAttractSphere->InitSphereRadius(m_fAttractRange);
-	m_pPlayerAttractSphere->
+	//m_pPlayerAttractSphere = CreateDefaultSubobject<USphereComponent>(TEXT("AttractSphere"));
+	//m_pPlayerAttractSphere->InitSphereRadius(m_fAttractRange);
 
 	m_pFollowTarget = nullptr;
 }
