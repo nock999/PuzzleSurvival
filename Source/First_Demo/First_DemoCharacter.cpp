@@ -10,6 +10,7 @@
 #include "Kismet/HeadMountedDisplayFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "MotionControllerComponent.h"
+#include "Runtime/Engine/Classes/Components/SphereComponent.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
@@ -79,8 +80,10 @@ AFirst_DemoCharacter::AFirst_DemoCharacter()
 	VR_MuzzleLocation->SetRelativeLocation(FVector(0.000004, 53.999992, 10.000000));
 	VR_MuzzleLocation->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));		// Counteract the rotation of the VR gun model.
 
-	// Uncomment the following line to turn motion controllers on by default:
-	//bUsingMotionControllers = true;
+    m_pFireflyAttractSphere = CreateDefaultSubobject<USphereComponent>(_T("FireflyAttractSphere"));
+    m_pFireflyAttractSphere->SetupAttachment(RootComponent);
+    m_pFireflyAttractSphere->InitSphereRadius(m_fAttractRange);
+    m_pFireflyAttractSphere->ComponentTags.Add(TEXT("FireflyCollision"));
 }
 
 void AFirst_DemoCharacter::BeginPlay()
@@ -102,6 +105,11 @@ void AFirst_DemoCharacter::BeginPlay()
 		VR_Gun->SetHiddenInGame(true, true);
 		Mesh1P->SetHiddenInGame(false, true);
 	}
+}
+
+void AFirst_DemoCharacter::OnConstruction(const FTransform& Transform)
+{
+    m_pFireflyAttractSphere->InitSphereRadius(m_fAttractRange);
 }
 
 //////////////////////////////////////////////////////////////////////////

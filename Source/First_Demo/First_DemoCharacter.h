@@ -51,7 +51,13 @@ public:
 protected:
 	virtual void BeginPlay();
 
+    void OnConstruction(const FTransform& Transform) override;
+
+
 public:
+    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+    class USphereComponent* m_pFireflyAttractSphere;
+
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseTurnRate;
@@ -138,5 +144,9 @@ public:
 	/** Returns FirstPersonCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
+    class AFirefly* m_pHeldFirefly = nullptr;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Firefly")
+    float m_fAttractRange = 500.0f;
 };
 
