@@ -52,8 +52,5 @@ protected:
 	float m_fOrbitFreq;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Firefly")
-	float m_fAttractRange;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Firefly")
 	float m_fPlayerConvinceDelay;
 };

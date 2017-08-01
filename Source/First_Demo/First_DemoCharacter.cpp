@@ -123,12 +123,6 @@ void AFirst_DemoCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	//InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AFirst_DemoCharacter::TouchStarted);
-	if (EnableTouchscreenMovement(PlayerInputComponent) == false)
-	{
-		PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFirst_DemoCharacter::OnFire);
-	}
-
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AFirst_DemoCharacter::OnResetVR);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFirst_DemoCharacter::MoveForward);

@@ -18,7 +18,6 @@ AFirefly::AFirefly()
 	m_fOrbitHeight = 20.0f;
 	m_fOrbitHeightFreq = 1.0f;
 	m_fOrbitFreq = 1.0f;
-	m_fAttractRange = 300.0f;
 
 	m_pRootSceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComp"));
 	RootComponent = m_pRootSceneComponent;
